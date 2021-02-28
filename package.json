@@ -4,6 +4,7 @@
   "version": "1.1.3",
   "author": "Austin Green",
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.2.0",
     "bulma": "^0.9.0",
     "gatsby": "^2.20.35",
     "gatsby-image": "^2.3.5",
@@ -45,6 +46,10 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "prettier": "^2.0.5"
+    "autoprefixer": "^10.2.4",
+    "gatsby-plugin-postcss": "^3.7.0",
+    "postcss": "^8.2.6",
+    "prettier": "^2.0.5",
+    "tailwindcss": "^2.0.3"
   }
 }
