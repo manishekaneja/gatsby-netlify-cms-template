@@ -15,6 +15,7 @@ collections:
   - name: 'projects'
     label: 'Projects'
     folder: 'src/pages/project'
+    create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
     fields:
       - {
