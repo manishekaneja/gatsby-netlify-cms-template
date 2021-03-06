@@ -12,7 +12,7 @@ techStack:
 
 
 
-Yes, the best possible solution to that (which comes to almost everyone's minds ) is "Let's write it somewhere". \*\*But is it safe??\*\*. I don't want to expose any of my passwords by just writing them on a piece of paper.
+Yes, the best possible solution to that (which comes to almost everyone's minds ) is "Let's write it somewhere". **But is it safe??**. I don't want to expose any of my passwords by just writing them on a piece of paper.
 
 The next immediate option is to keep it on Mobile. But generally, it's difficult to organize passwords on mobile notepads or text files.
 
