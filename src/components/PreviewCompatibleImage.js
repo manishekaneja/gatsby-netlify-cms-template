@@ -4,8 +4,6 @@ import React from 'react';
 const PreviewCompatibleImage = ({ imageInfo }) => {
   const imageStyle = { borderRadius: '5px' };
   const { alt = '', childImageSharp, image } = imageInfo;
-  console.log(imageInfo)
-
   if (!!image && !!image.childImageSharp) {
     return (
       <Img style={imageStyle} fluid={image.childImageSharp.fluid} alt={alt} />

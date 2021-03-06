@@ -82,10 +82,10 @@ module.exports = {
             resolve: `gatsby-remark-classes`,
             options: {
               classMap: {
-                "heading[depth=3]": "text-xl sm:text-3xl font-semibold mb-5 text-red-300",
-                "list[ordered=false]":"ml-10 list-decimal sm:my-5 my-2 text-yellow-200",
-                "listItem":"sm:text-lg mb-2",
-                "paragraph": "text-base sm:text-lg text-gray-100 mb-6",
+                "heading[depth=3]": "text-xl font-semibold mb-5 text-red-300 sm:text-3xl",
+                "list[ordered=false]":"ml-10 list-decimal my-2 text-yellow-200 sm:my-5 ",
+                "listItem":"mb-2 sm:text-lg",
+                "paragraph": "text-base text-gray-100 mb-6 sm:text-lg",
                 "strong":"text-green-200 my-6",
                 "link":"text-blue-200 underline text-semibold italic"
               }
