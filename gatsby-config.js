@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: 'Project Expo',
     description:
-      'This repo contains an example business website that is built with Gatsby, and Netlify CMS.It follows the JAMstack architecture by using Git as a single source of truth, and Netlify for continuous deployment, and CDN distribution.',
+      'This web application displays the side porjects developed by @manishekaneja. Most of them can also bee seen on Github',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -74,5 +74,25 @@ module.exports = {
     }, // must be after other CSS plugins
     'gatsby-plugin-netlify', // make sure to keep it last in the array
     'gatsby-plugin-postcss',
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-classes`,
+            options: {
+              classMap: {
+                "heading[depth=3]": "text-xl sm:text-3xl font-semibold mb-5 text-red-300",
+                "list[ordered=false]":"ml-10 list-decimal sm:my-5 my-2 text-yellow-200",
+                "listItem":"sm:text-lg mb-2",
+                "paragraph": "text-base sm:text-lg text-gray-100 mb-6",
+                "strong":"text-green-200 my-6",
+                "link":"text-blue-200 underline text-semibold italic"
+              }
+            }
+          }
+        ]
+      }
+    }
   ],
 };

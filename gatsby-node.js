@@ -16,7 +16,6 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               description
-            
               name
               projectId
               techStack
@@ -35,10 +34,10 @@ exports.createPages = ({ actions, graphql }) => {
     const projets = result.data.allMarkdownRemark.edges;
 
     projets.forEach((singleProject) => {
-      const id = singleProject.node.id;
+      const id = singleProject.node.frontmatter.projectId;
       createPage({
-        path: singleProject.node.id,
-        component: path.resolve(`src/templates/project-screen.js`),
+        path: id,
+        component: path.resolve(`src/templates/project-screen-render.js`),
         context: {
           id,
         },
