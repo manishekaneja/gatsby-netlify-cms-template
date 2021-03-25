@@ -1,12 +1,12 @@
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../components/Layout';
 import { SlidingCard } from '../components/SlidingCard';
 import left from '../styles/assets/left.svg';
 import right from '../styles/assets/right.svg';
 
-const query = graphql`
-  query MyQuery1 {
+export const query = graphql`
+  query IntroPageQuery {
     allMarkdownRemark(limit: 1000) {
       edges {
         node {
@@ -34,17 +34,14 @@ const query = graphql`
   }
 `;
 
-const RootPage = () => {
+const RootPage = ({ data: { allMarkdownRemark: { edges }, } }) => {
   const [idx, setIdx] = useState(0);
-  const {
-    allMarkdownRemark: { edges },
-  } = useStaticQuery(query);
   const xDown = useRef(null);
   const yDown = useRef(null);
   useEffect(() => {
     let touchStartListener = null;
     let touchMoveListener = null;
-    const ref = ['Intro', ...edges, 'End'];
+    const ref = ['Intro', ...edges ? edges : [], 'End'];
     const handleTouchStart = (evt) => {
       const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
       xDown.current = firstTouch.clientX;
@@ -84,6 +81,9 @@ const RootPage = () => {
       document.removeEventListener('touchmove', touchMoveListener);
     };
   }, [edges]);
+  if (!edges) {
+    return null;
+  }
 
   return (
     <>

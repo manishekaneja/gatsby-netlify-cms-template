@@ -11,7 +11,7 @@ const ProjectPagePreview = ({ entry, widgetFor }) => {
           description={entry.getIn(['data', 'description'])}
           image={entry.getIn(['data', 'image'])}
           mainpitch={entry.getIn(['data', 'body'])}
-          techStack={entry.getIn(['data', 'techStack'])||[]}
+          techStack={entry.getIn(['data', 'techStack']) || []}
         />
       </div>
       <br />
@@ -26,10 +26,10 @@ const ProjectPagePreview = ({ entry, widgetFor }) => {
                 image: {
                   childImageSharp: {
                     fluid: entry.getIn(['data', 'image']),
-                    alt:"none"
+                    alt: "none"
                   },
                 },
-                techStack: entry.getIn(['data', 'techStack']),
+                techStack: entry.getIn(['data', 'techStack']) || [],
                 description: entry.getIn(['data', 'description']),
               },
             },
