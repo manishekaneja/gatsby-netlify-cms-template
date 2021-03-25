@@ -13,10 +13,10 @@ techStack:
 
 A 90's kid must be familiar with the game shown above and yes i just created the sub section of that game in **Java.**
 
-- - -
 
-#### Inshort
-
-
+**Inshort,**
 
 This game covers only a small section instead of a complete journey of the character. The Interface has basic controls like moving forward, backward, and jump. It also includes a specific *set of rewards* for players along with a *bunch of enemies*.
+
+
+***The code for the same is present at Github. Check the same from this [link](https://github.com/manishekaneja/Island-Game)***
