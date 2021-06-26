@@ -1,10 +1,10 @@
-import { graphql } from 'gatsby';
+import {graphql} from 'gatsby';
 import React from 'react';
 import Layout from '../components/Layout';
-import { ProjectPageTemplate } from './project-page-template';
+import {ProjectPageTemplate} from '../templates/project-page';
 
-const ProjectPage = ({ data }) => {
-  const { frontmatter, html } = data.markdownRemark;
+const ProjectPage = ({data}) => {
+  const {frontmatter, html} = data.markdownRemark;
   return (
     <Layout layout={2} documentTitle={frontmatter.name}>
       <ProjectPageTemplate
@@ -23,24 +23,24 @@ export default ProjectPage;
 
 export const singleItemQuery = graphql`
   query SingleGraphQuery($id: String!) {
-    markdownRemark(frontmatter: {projectId: { eq: $id }}) {
-        id
-        frontmatter {
-          description
-          name
-          image {
-            childImageSharp {
-              fluid(maxWidth: 4048, quality: 100) {
-                ...GatsbyImageSharpFluid
-              }
+    markdownRemark(frontmatter: {projectId: {eq: $id}}) {
+      id
+      frontmatter {
+        description
+        name
+        image {
+          childImageSharp {
+            fluid(maxWidth: 4048, quality: 100) {
+              ...GatsbyImageSharpFluid
             }
           }
-          projectId
-          techStack
-          title
-          date
         }
-        html
+        projectId
+        techStack
+        title
+        date
       }
-      }
+      html
+    }
+  }
 `;

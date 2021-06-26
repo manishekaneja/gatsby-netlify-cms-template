@@ -1,6 +1,6 @@
 import React from 'react';
 import { SlidingCard } from '../../components/SlidingCard';
-import { ProjectPageTemplate } from '../../templates/project-page-template';
+import { ProjectPageTemplate } from '../../templates/project-page';
 
 const ProjectPagePreview = ({ entry, widgetFor }) => {
   return (

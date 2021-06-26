@@ -1,7 +1,7 @@
 import React from 'react';
-import { HTMLContent } from '../components/HTMLContent';
-import { SubTitle } from '../components/SubTitle';
-import { Tag } from '../components/Tag';
+import {HTMLContent} from '../components/HTMLContent';
+import {SubTitle} from '../components/SubTitle';
+import {Tag} from '../components/Tag';
 
 export const ProjectPageTemplate = ({
   image,
@@ -16,7 +16,9 @@ export const ProjectPageTemplate = ({
       className="bg-no-repeat bg-cover h-4/6 bg-center bg-fixed flex justify-center items-center relative"
       style={{
         backgroundImage: `url(${
-          !!(image && image.childImageSharp) ? image.childImageSharp.fluid.src : image
+          !!(image && image.childImageSharp)
+            ? image.childImageSharp.fluid.src
+            : image
         })`,
       }}
     >
