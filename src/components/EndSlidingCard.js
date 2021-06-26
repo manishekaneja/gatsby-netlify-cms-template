@@ -1,8 +1,30 @@
+import {graphql, useStaticQuery} from 'gatsby';
 import {withPrefix} from 'gatsby-link';
 import React from 'react';
 import {CharacterRandomizer} from './CharacterRandomizer';
 
 export const EndSlidingCard = ({position}) => {
+  const {
+    site: {
+      siteMetadata: {socialAccounts},
+    },
+  } = useStaticQuery(
+    graphql`
+      query SiteMetadataQuery {
+        site {
+          siteMetadata {
+            socialAccounts {
+              link
+              slug
+              title
+              priority
+            }
+          }
+        }
+      }
+    `
+  );
+
   return (
     <div
       className={`w-full h-full absolute flex justify-center items-center transition duration-500 ease-in-out ${
@@ -31,38 +53,23 @@ export const EndSlidingCard = ({position}) => {
             <CharacterRandomizer string="Find-Me-at" />
           </div>
           <div className="text-xl my-4 flex">
-            <div className="mx-2 hover:shadow-xl  transition-all duration-700 m-3 ">
-              <abbr title="Github - Manish Aneja">
-                <img
-                  src={`${withPrefix('/')}images/github.svg`}
-                  alt="Github - Manish Aneja"
-                />
-              </abbr>
-            </div>
-            <div className="mx-2 hover:shadow-xl  transition-all duration-700 m-3 ">
-              <abbr title="LinkedIn - Manish Aneja">
-                <img
-                  src={`${withPrefix('/')}images/linkedin.svg`}
-                  alt="LinkedIn - Manish Aneja"
-                />
-              </abbr>
-            </div>
-            <div className="mx-2 hover:shadow-xl  transition-all duration-700 m-3 ">
-              <abbr title="Hashnode Blog">
-                <img
-                  src={`${withPrefix('/')}images/blog.svg`}
-                  alt="Hashnode Blog"
-                />
-              </abbr>
-            </div>
-            <div className="mx-2 hover:shadow-xl  transition-all duration-700 m-3 ">
-              <abbr title="Portfolio - Manish Aneja">
-                <img
-                  src={`${withPrefix('/')}images/portfolio.svg`}
-                  alt="Portfolio - Manish Aneja"
-                />
-              </abbr>
-            </div>
+            {socialAccounts
+              .sort((e1, e2) => e1.priority - e2.priority)
+              .map((socialElement) => (
+                <a
+                  href={socialElement.link}
+                  className="mx-2 p-2 border-gray-300 border rounded-full hover:shadow-xl hover:bg-gray-900 cursor-pointer  transition-all duration-700 m-3 "
+                >
+                  <abbr title={socialElement.slug}>
+                    <img
+                      src={`${withPrefix('/')}images/${
+                        socialElement.title
+                      }.svg`}
+                      alt={socialElement.slug}
+                    />
+                  </abbr>
+                </a>
+              ))}
           </div>
           <div className="text-lg my-2 block  ">
             <p className="text-blue-200 text-center">

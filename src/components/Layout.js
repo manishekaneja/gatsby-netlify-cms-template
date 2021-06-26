@@ -4,36 +4,38 @@ import {Helmet} from 'react-helmet';
 import useSiteMetadata from './SiteMetadata';
 
 const Layout = ({documentTitle, children, layout = 1}) => {
-  const {title, description} = useSiteMetadata();
+  const {title, author, description} = useSiteMetadata();
   return (
     <div>
       <Helmet>
         <html lang="en" />
-        <title>{documentTitle || title}</title>
+        <title>
+          {documentTitle || title} | {author}
+        </title>
         <meta name="description" content={description} />
-        {/* <meta name="viewport" content="width=device-width, user-scalable=no" /> */}
-        {/* <link
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        <link
             rel="apple-touch-icon"
             sizes="180x180"
-            href={`${withPrefix('/')}img/apple-touch-icon.png`}
+            href={`${withPrefix('/')}images/logo.svg`}
           />
           <link
             rel="icon"
             type="image/png"
-            href={`${withPrefix('/')}img/favicon-32x32.png`}
+            href={`${withPrefix('/')}images/logo.svg`}
             sizes="32x32"
-          /> */}
+          />
         <link
           rel="icon"
           type="image/png"
           href={`${withPrefix('/')}images/logo.svg`}
           sizes="16x16"
         />
-        {/* <link
+        <link
             rel="mask-icon"
-            href={`${withPrefix('/')}img/safari-pinned-tab.svg`}
-            color="#ff4400"
-          /> */}
+            href={`${withPrefix('/')}images/logo.svg`}
+            color="#111827"
+          />
         <meta name="theme-color" content="#fff" />
         <meta property="og:type" content="business.business" />
         <meta pproperty="og:title" content={documentTitle || title} />

@@ -1,8 +1,35 @@
 module.exports = {
   siteMetadata: {
-    title: 'Project Expo',
+    title: 'Project Exhibition',
+    author: 'Manish Aneja',
     description:
-      'This web application displays the side porjects developed by @manishekaneja. Most of them can also bee seen on Github',
+      "Single Platform the showcase and share some fun projects and learnings. In this exhibition, you will find multiple small projects ans some brief about them, all at a single place. Also, code for these projects code's can be found on my github account (@manishekaneja) as well.",
+    socialAccounts: [
+      {
+        title: 'github',
+        slug: 'Github | Manish Aneja',
+        link: 'https://github.com/manishekaneja/',
+        priority: 1,
+      },
+      {
+        title: 'linkedin',
+        slug: 'Linkedin | Manish Aneja',
+        link: 'https://www.linkedin.com/in/manishaneja/',
+        priority: 2,
+      },
+      {
+        title: 'hashnode',
+        slug: 'Hashnode | Manish Aneja',
+        link: 'https://manishaneja.hashnode.dev/',
+        priority: 3,
+      },
+      {
+        title: 'portfolio',
+        slug: 'Portfolio | Manish Aneja',
+        link: 'https://me.manishaneja.com/',
+        priority: 4,
+      },
+    ],
   },
   plugins: [
     'gatsby-plugin-react-helmet',
