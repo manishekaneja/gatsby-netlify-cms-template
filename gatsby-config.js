@@ -136,5 +136,11 @@ module.exports = {
         theme_color: `#111827`,
       },
     },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        appendScript: require.resolve(`./src/custom-sw.js`),
+      },
+    },
   ],
 };
