@@ -1,15 +1,15 @@
-import { Link } from 'gatsby';
+import {Link} from 'gatsby';
 import React from 'react';
-import { EndSlidingCard } from './EndSlidingCard';
-import { IntroSlidingCard } from './IntroSlidingCard';
+import {EndSlidingCard} from './EndSlidingCard';
+import {IntroSlidingCard} from './IntroSlidingCard';
 import PreviewCompatibleImage from './PreviewCompatibleImage';
-import { SubTitle } from './SubTitle';
-import { Tag } from './Tag';
-import { Title } from './Title';
+import {SubTitle} from './SubTitle';
+import {Tag} from './Tag';
+import {Title} from './Title';
 
-export const SlidingCard = ({ position, data }) =>
+export const SlidingCard = ({position, data}) =>
   !data ? null : data === 'Intro' ? (
-    <IntroSlidingCard {...{ position }} />
+    <IntroSlidingCard {...{position}} />
   ) : data === 'End' ? (
     <EndSlidingCard {...{position}} />
   ) : (

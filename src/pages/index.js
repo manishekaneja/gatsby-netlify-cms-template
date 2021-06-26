@@ -1,13 +1,13 @@
-import { graphql } from 'gatsby';
-import React, { useEffect, useRef, useState } from 'react';
+import {graphql} from 'gatsby';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import Layout from '../components/Layout';
-import { SlidingCard } from '../components/SlidingCard';
+import {SlidingCard} from '../components/SlidingCard';
 import left from '../styles/assets/left.svg';
 import right from '../styles/assets/right.svg';
 
 export const query = graphql`
   query IntroPageQuery {
-    allMarkdownRemark(limit: 1000) {
+    allMarkdownRemark {
       edges {
         node {
           id
@@ -34,14 +34,18 @@ export const query = graphql`
   }
 `;
 
-const RootPage = ({ data: { allMarkdownRemark: { edges }, } }) => {
+const RootPage = ({
+  data: {
+    allMarkdownRemark: {edges},
+  },
+}) => {
   const [idx, setIdx] = useState(0);
   const xDown = useRef(null);
   const yDown = useRef(null);
   useEffect(() => {
     let touchStartListener = null;
     let touchMoveListener = null;
-    const ref = ['Intro', ...edges ? edges : [], 'End'];
+    const ref = ['Intro', ...(edges ? edges : []), 'End'];
     const handleTouchStart = (evt) => {
       const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
       xDown.current = firstTouch.clientX;
@@ -81,6 +85,7 @@ const RootPage = ({ data: { allMarkdownRemark: { edges }, } }) => {
       document.removeEventListener('touchmove', touchMoveListener);
     };
   }, [edges]);
+  const cardsList = useMemo(() => ['Intro', ...edges, 'End'], [edges]);
   if (!edges) {
     return null;
   }
@@ -89,7 +94,7 @@ const RootPage = ({ data: { allMarkdownRemark: { edges }, } }) => {
     <>
       <Layout>
         <div className="relative w-full h-full">
-          {['Intro', ...edges, 'End'].map((_, index) => (
+          {cardsList.map((_, index) => (
             <SlidingCard key={index} data={_} position={idx + index} />
           ))}
         </div>
