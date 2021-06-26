@@ -13,7 +13,7 @@ export const ProjectPageTemplate = ({
 }) => (
   <>
     <div
-      className="bg-no-repeat bg-cover h-4/6 bg-center bg-fixed flex justify-center items-center relative"
+      className="bg-no-repeat bg-cover h-screen md:h-4/5 bg-center bg-fixed flex justify-center items-center relative"
       style={{
         backgroundImage: `url(${
           !!(image && image.childImageSharp)
@@ -23,11 +23,11 @@ export const ProjectPageTemplate = ({
       }}
     >
       <div className="absolute w-full h-full bg-black opacity-60 z-0" />
-      <div className="z-10 shadow-xl py-10 px-20 bg-black rounded-sm">
-        <h1 className="text-6xl text-center font-extrabold mb-5 text-yellow-100">
+      <div className="z-10 shadow-xl px-10 py-10 md:px-20 bg-black rounded-sm">
+        <h1 className="text-4xl md:text-6xl text-center font-extrabold mb-5 text-yellow-100">
           {title}
         </h1>
-        <h3 className="text-base font-extralight text-purple-200 text-center">
+        <h3 className=" text-sm md:text-base font-extralight text-purple-200 text-center">
           {description}
         </h3>
       </div>
