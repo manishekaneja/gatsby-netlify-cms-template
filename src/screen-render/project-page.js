@@ -13,7 +13,6 @@ const ProjectPage = ({data}) => {
         techStack={frontmatter.techStack}
         mainpitch={html}
         description={frontmatter.description}
-        date={frontmatter.date}
       />
     </Layout>
   );
@@ -38,7 +37,6 @@ export const singleItemQuery = graphql`
         projectId
         techStack
         title
-        date
       }
       html
     }

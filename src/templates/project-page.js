@@ -1,3 +1,5 @@
+import {Link} from 'gatsby';
+import {withPrefix} from 'gatsby-link';
 import React from 'react';
 import {HTMLContent} from '../components/HTMLContent';
 import {SubTitle} from '../components/SubTitle';
@@ -8,7 +10,6 @@ export const ProjectPageTemplate = ({
   title,
   mainpitch,
   description,
-  date,
   techStack = [],
 }) => (
   <>
@@ -43,6 +44,19 @@ export const ProjectPageTemplate = ({
         </div>
         <div className="my-5 px-4 py-6 outline-white">
           <HTMLContent content={mainpitch} />
+        </div>
+        <div className="px-4">
+          <Link
+            to="/"
+            className=" inline-flex opacity-50 hover:opacity-100 items-center py-1"
+          >
+            <img
+              className="h-6"
+              src={`${withPrefix('/')}images/left.svg`}
+              alt="go-back"
+            />
+            <span className="text-base underline">Go Back</span>
+          </Link>
         </div>
       </div>
     </section>
