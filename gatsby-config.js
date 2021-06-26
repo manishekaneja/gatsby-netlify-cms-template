@@ -122,5 +122,19 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Project Exhibition | Manish Aneja`,
+        short_name: `Project Expo`,
+        description: `Single Platform the showcase and share some fun projects and learnings. In this exhibition, you will find multiple small projects ans some brief about them, all at a single place. Also, code for these projects code's can be found on my github account (@manishekaneja) as well.`,
+        display: `standalone`,
+        lang: `en`,
+        icon: 'static/images/logo.svg',
+        start_url: `/`,
+        background_color: `#111827`,
+        theme_color: `#111827`,
+      },
+    },
   ],
 };
