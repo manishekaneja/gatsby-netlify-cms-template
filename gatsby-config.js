@@ -7,24 +7,24 @@ module.exports = {
   plugins: [
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
-  {
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/static/img`,
+        path: `${__dirname}/content/uploads`,
         name: 'uploads',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/pages`,
+        path: `${__dirname}/content/pages`,
         name: 'pages',
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/static/images`,
         name: 'images',
       },
     },
@@ -81,17 +81,19 @@ module.exports = {
             resolve: `gatsby-remark-classes`,
             options: {
               classMap: {
-                "heading[depth=3]": "text-2xl font-semibold mb-5 text-red-300 sm:text-3xl",
-                "list[ordered=false]":"ml-10 list-decimal my-2 text-yellow-200 sm:my-5 ",
-                "listItem":"mb-2 sm:text-lg",
-                "paragraph": "text-base text-gray-100 mb-6 sm:text-lg",
-                "strong":"text-green-200 my-6",
-                "link":"text-blue-200 underline text-semibold italic"
-              }
-            }
-          }
-        ]
-      }
-    }
+                'heading[depth=3]':
+                  'text-2xl font-semibold mb-5 text-red-300 sm:text-3xl',
+                'list[ordered=false]':
+                  'ml-10 list-decimal my-2 text-yellow-200 sm:my-5 ',
+                listItem: 'mb-2 sm:text-lg',
+                paragraph: 'text-base text-gray-100 mb-6 sm:text-lg',
+                strong: 'text-green-200 my-6',
+                link: 'text-blue-200 underline text-semibold italic',
+              },
+            },
+          },
+        ],
+      },
+    },
   ],
 };

@@ -9,9 +9,9 @@ const Layout = ({documentTitle, children, layout = 1}) => {
     <div>
       <Helmet>
         <html lang="en" />
-        <title>{documentTitle || title}</title>u
+        <title>{documentTitle || title}</title>
         <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, user-scalable=no" />
+        {/* <meta name="viewport" content="width=device-width, user-scalable=no" /> */}
         {/* <link
             rel="apple-touch-icon"
             sizes="180x180"

@@ -1,9 +1,7 @@
-import {graphql} from 'gatsby';
+import {graphql, withPrefix} from 'gatsby';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import Layout from '../components/Layout';
 import {SlidingCard} from '../components/SlidingCard';
-import left from '../styles/assets/left.svg';
-import right from '../styles/assets/right.svg';
 
 export const query = graphql`
   query IntroPageQuery {
@@ -115,14 +113,14 @@ const RootPage = ({
         {idx < 0 && (
           <div className="absolute hidden h-screen w-1/6 top-0 left-0 sm:flex justify-start z-40">
             <button onClick={goLeft} className="focus:outline-none pl-5">
-              <img src={left} alt="left" />
+              <img src={`${withPrefix('/')}images/left.svg`} alt="left" />
             </button>
           </div>
         )}
         {idx - 1 > -1 * (edges.length + 2) && (
           <div className="absolute hidden h-screen w-1/6 top-0 right-0 sm:flex justify-end z-40">
             <button className="focus:outline-none pr-5" onClick={goRight}>
-              <img src={right} alt="left" />
+              <img src={`${withPrefix('/')}images/right.svg`} alt="right" />
             </button>
           </div>
         )}
