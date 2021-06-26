@@ -1,5 +1,5 @@
 import {graphql} from 'gatsby';
-import React, {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import Layout from '../components/Layout';
 import {SlidingCard} from '../components/SlidingCard';
 import left from '../styles/assets/left.svg';
@@ -42,10 +42,15 @@ const RootPage = ({
   const [idx, setIdx] = useState(0);
   const xDown = useRef(null);
   const yDown = useRef(null);
+  const goLeft = useCallback(() => setIdx((idx) => Math.min(idx + 1, 0)), []);
+  const goRight = useCallback(
+    () => setIdx((idx) => Math.max(idx - 1, -1 * (edges.length + 1))),
+    [edges.length]
+  );
+
   useEffect(() => {
     let touchStartListener = null;
     let touchMoveListener = null;
-    const ref = ['Intro', ...(edges ? edges : []), 'End'];
     const handleTouchStart = (evt) => {
       const firstTouch = (evt.touches || evt.originalEvent.touches)[0];
       xDown.current = firstTouch.clientX;
@@ -61,11 +66,8 @@ const RootPage = ({
       var xDiff = xDown.current - xUp;
       var yDiff = yDown.current - yUp;
       if (Math.abs(xDiff) > Math.abs(yDiff)) {
-        if (xDiff > 0) {
-          setIdx((idx) => Math.max(idx - 1, -1 * (ref.length + 1)));
-        } else {
-          setIdx((idx) => Math.min(idx + 1, 0));
-        }
+        if (xDiff > 0) goRight();
+        else goLeft();
       }
       xDown.current = null;
       yDown.current = null;
@@ -84,7 +86,19 @@ const RootPage = ({
       document.removeEventListener('touchstart', touchStartListener);
       document.removeEventListener('touchmove', touchMoveListener);
     };
-  }, [edges]);
+  }, [edges, goLeft, goRight]);
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (event.code === 'ArrowRight' || event.code === 'Space') goRight();
+      else if (event.code === 'ArrowLeft') goLeft();
+    };
+    document.addEventListener('keydown', handler);
+    return () => {
+      document.removeEventListener('keydown', handler);
+    };
+  }, [goLeft, goRight]);
+
   const cardsList = useMemo(() => ['Intro', ...edges, 'End'], [edges]);
   if (!edges) {
     return null;
@@ -100,22 +114,14 @@ const RootPage = ({
         </div>
         {idx < 0 && (
           <div className="absolute hidden h-screen w-1/6 top-0 left-0 sm:flex justify-start z-40">
-            <button
-              onClick={setIdx.bind({}, (idx) => Math.min(idx + 1, 0))}
-              className="focus:outline-none pl-5"
-            >
+            <button onClick={goLeft} className="focus:outline-none pl-5">
               <img src={left} alt="left" />
             </button>
           </div>
         )}
         {idx - 1 > -1 * (edges.length + 2) && (
           <div className="absolute hidden h-screen w-1/6 top-0 right-0 sm:flex justify-end z-40">
-            <button
-              className="focus:outline-none pr-5"
-              onClick={setIdx.bind({}, (idx) =>
-                Math.max(idx - 1, -1 * (edges.length + 1))
-              )}
-            >
+            <button className="focus:outline-none pr-5" onClick={goRight}>
               <img src={right} alt="left" />
             </button>
           </div>
