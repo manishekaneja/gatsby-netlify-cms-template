@@ -7,16 +7,14 @@ backend:
     delete: 'Delete {{collection}} “{{slug}}”'
     uploadMedia: '[skip ci] Upload “{{path}}”'
     deleteMedia: '[skip ci] Delete “{{path}}”'
-
-media_folder: static/img
-public_folder: /img
-
+media_folder: content/uploads
 collections:
   - name: 'projects'
     label: 'Projects'
-    folder: 'src/pages/project'
+    folder: 'content/pages/projects'
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    identifier_field: projectId
     fields:
       - {
           label: 'Project Id',
